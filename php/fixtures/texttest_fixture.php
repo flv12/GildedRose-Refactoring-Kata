@@ -22,7 +22,8 @@ $items = [
     new Item('Conjured Mana Cake', 3, 6),
 ];
 
-$app = new GildedRose($items);
+$app = new GildedRose();
+$app->setItems($items);
 
 $days = 2;
 if ((is_countable($argv) ? count($argv) : 0) > 1) {

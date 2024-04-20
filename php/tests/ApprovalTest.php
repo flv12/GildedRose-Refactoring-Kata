@@ -20,11 +20,19 @@ use PHPUnit\Framework\TestCase;
  */
 class ApprovalTest extends TestCase
 {
+    private GildedRose $gildedRose;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->gildedRose = new GildedRose();
+    }
+
     public function testFoo(): void
     {
-        $items = [new Item('foo', 0, 0)];
-        $app = new GildedRose($items);
-        $app->updateQuality();
+        $items[] = new Item('foo', 0, 0);
+        $this->gildedRose->setItems($items);
+        $this->gildedRose->updateQuality();
 
         Approvals::verifyList($items);
     }

@@ -6,12 +6,23 @@ namespace GildedRose;
 
 final class GildedRose
 {
+    private array $items;
+
     /**
      * @param Item[] $items
+     * @return void
      */
-    public function __construct(
-        private array $items
-    ) {
+    public function setItems(array $items): void
+    {
+        $this->items = $items;
+    }
+
+    /**
+     * @return Item[]
+     */
+    public function getItems(): array
+    {
+        return $this->items;
     }
 
     public function updateQuality(): void
