@@ -4,19 +4,13 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use ApprovalTests\Approvals;
+use ApprovalTests\{Approvals, CombinationApprovals};
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use PHPUnit\Framework\TestCase;
 
 /**
  * This unit test uses [Approvals](https://github.com/approvals/ApprovalTests.php).
- *
- * There are two test cases here with different styles:
- * <li>"foo" is more similar to the unit test from the 'Java' version
- * <li>"thirtyDays" is more similar to the TextTest from the 'Java' version
- *
- * I suggest choosing one style to develop and deleting the other.
  */
 class ApprovalTest extends TestCase
 {
@@ -47,5 +41,22 @@ class ApprovalTest extends TestCase
         $output = ob_get_clean();
 
         Approvals::verifyString($output);
+    }
+
+    public function testAllCombinations(): void
+    {
+        CombinationApprovals::verifyAllCombinations3(
+            function (string $name, int $sellIn, int $quantity) {
+                $items[] = new Item($name, $sellIn, $quantity);
+
+                $gildedRose = new GildedRose();
+                $gildedRose->setItems($items);
+                $gildedRose->updateQuality();
+                return $items[0];
+            },
+            ['+5 Dexterity Vest', 'Aged Brie', 'Elixir of the Mongoose', 'Sulfuras, Hand of Ragnaros', 'Backstage passes to a TAFKAL80ETC concert', 'Conjured Mana Cake'],
+            range(-5, 15),
+            range(45, 55)
+        );
     }
 }
