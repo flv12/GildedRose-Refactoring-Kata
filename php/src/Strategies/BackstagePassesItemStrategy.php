@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace GildedRose;
+namespace GildedRose\Strategies;
+
+use GildedRose\Item;
+use GildedRose\SpecificItemInterface;
 
 class BackstagePassesItemStrategy implements SpecificItemInterface
 {

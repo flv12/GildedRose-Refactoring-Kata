@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\Strategies\AgedBrieItemStrategy;
+use GildedRose\Strategies\BackstagePassesItemStrategy;
+use GildedRose\Strategies\SulfurasItemStrategy;
+
 final class GildedRose
 {
-    public const AGED_BRIE = 'Aged Brie';
-    public const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
-    public const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
-
     private array $items;
     private array $itemsStrategy;
 
