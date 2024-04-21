@@ -6,6 +6,7 @@ namespace GildedRose;
 
 use GildedRose\Strategies\AgedBrieItemStrategy;
 use GildedRose\Strategies\BackstagePassesItemStrategy;
+use GildedRose\Strategies\ConjuredItemStrategy;
 use GildedRose\Strategies\SulfurasItemStrategy;
 
 final class GildedRose
@@ -19,6 +20,7 @@ final class GildedRose
             new AgedBrieItemStrategy(),
             new BackstagePassesItemStrategy(),
             new SulfurasItemStrategy(),
+            new ConjuredItemStrategy(),
         ];
     }
 
